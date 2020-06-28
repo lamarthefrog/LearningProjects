@@ -1,0 +1,13 @@
+#Divisors
+#This program should have the user enter a number and then show-
+#-all the divisors of that number
+#note: a divisor is a number that it can cleanly be divided by
+
+input_number = int(input('Enter a number: '))
+divisors=[]
+
+for num in range(2, input_number):
+    if num % input_number == 0:
+        print(num)
+    else:
+        continue
