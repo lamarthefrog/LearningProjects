@@ -1,0 +1,59 @@
+#horrible text adventure game about whether or not you should shoot people
+title = "Don't Get Killed, Idiot (A Morality Tale)"
+
+
+#location = "Middle"
+has_gun = False
+money_total = 200
+
+intro_text = """You awaken in a shop.
+In your pocket is $200.
+The room to your right houses a man who will definitely kill you."""
+
+print(title)
+print()
+print(intro_text)
+choice = input("Would you like to buy a gun for $200? (Yes or No) \n>")
+
+if choice == "Yes":
+    money_total -= 200
+    has_gun = True
+    print("You now have $" + str(money_total) + " but you also have a Glock.")
+    print("Some may question your spending habits, but this is life or death.")
+else:
+    print("Alright. Your funeral, dipshit.")
+
+room_choice = input("Would you like to move to the next room? (Yes or No) \n>")
+
+if room_choice == "Yes":
+    print("You step into the adjacent room and see a madman brandishing a 357 magnum on his hip.")
+    print("\"YOU\'LL NEVER KILL ME. I HAVE A GUN,\" he yells at you.")
+    if has_gun == True:
+        fight_choice = input("Would you like to shoot him? \nIt's in self defense, so you're justified. (Yes or No) \n>")
+        if fight_choice == "Yes":
+            print("You swiftly pull out your Glock and murder his ass.")
+            print("YOU WIN")
+            print("THE END")
+        else:
+            print("As your conviction falters, the man notices your gun and goes into a panic. \nHe pulls out his revolver and shoots you six times in the chest.")
+            print("YOU GOT KILLED, IDIOT")
+            print("THE END")
+    if has_gun == False:
+        print("You assess the situation and determine that you are definitely fucked.")
+        losing_fight_choice = input("Do you try to take him on anyway? (Yes or No) \n>")
+        if losing_fight_choice == "Yes":
+            print("You rush to attack him, but the man shoots you six times in the chest.")
+            print("YOU GOT KILLED, IDIOT")
+            print("THE END")
+        else:
+            print("You stare down the man and loudly shout, \"VIOLENCE ISN\'T THE ANSWER\"")
+            print("The man disheartedly stares at you with tears welling in his eyes.")
+            print("\"I didn't want to live a life like this, thank you for seeing the best in me,\" he says.")
+            print("YOU WIN. VIOLENCE WASN'T THE ANSWER.")
+            print("THE END")
+else:
+    print("Paralyzed with choices and unable to make a firm decision,\nyou lie down on the floor and starve to death.")
+    print("THE END")
+    
+
+    
