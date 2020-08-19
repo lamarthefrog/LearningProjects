@@ -1,0 +1,70 @@
+#practicing making classes
+#super basic inventory system, in future could make things like Weapons a separate class
+    #also Inventory could be broken into sub-inventories based on consumables etc
+#in the future: get used to letting the user input stuff to make it happen
+    #either make typed commands clear, have a full list, or give adventure game choices
+
+
+gold = 1000
+inventory = []
+
+def check_wallet():
+    print(f"You currently have {gold} gold\n")
+
+def check_inventory():
+    print("Your current inventory:")
+    for item in inventory:
+        print(item)
+    print("")
+    
+class Item:
+    def __init__(self, name, cost, sell_price):
+        self.name = name
+        self.cost = cost
+        self.sell_price = sell_price
+    def buy_item(self):
+        global gold
+        if  gold < self.cost:
+            print(f"Sorry, you don't have enough money to buy a {self.name}.\n")
+        else:
+            gold -= self.cost
+            inventory.append(self.name)
+            print(f"One {self.name} has been added to your inventory.")
+            print(f"You now have {gold} pieces of gold.\n")
+    def sell_item(self):
+        global gold
+        gold += self.sell_price
+        inventory.remove(self.name)
+        print(f"You have sold one {self.name} for {self.sell_price} gold.")
+        print(f"You now have {gold} gold.\n")
+    def use_item(self):
+        if self.name not in inventory:
+            print("You do not have that item.\n")
+        elif self.name != "Potion":
+            print(f"You pose triumphantly with your new {self.name}\n")
+        else:
+            inventory.remove(self.name)
+            print(f"You drink a {self.name}\n")
+
+potion = Item("Potion", 50, 5)
+sword = Item("Sword", 500, 50)
+shield = Item("Shield", 200, 20)
+gun = Item("Gun", 2000, 200)
+
+check_wallet()
+potion.buy_item()
+sword.buy_item()
+potion.buy_item()
+potion.buy_item()
+check_inventory()
+shield.buy_item()
+check_inventory()
+
+potion.use_item()
+potion.use_item()
+potion.use_item()
+potion.use_item()
+sword.use_item()
+shield.use_item()
+
+gun.buy_item()
